@@ -1,0 +1,4 @@
+#vseg_ID	vrefseg	st_pos	ed_pos	mean_depth
+V1	HPV16	1	4648	147.54
+V2	HPV16	4649	6531	0.12
+V3	HPV16	6532	7906	146.65

@@ -1,0 +1,27 @@
+patientID=HPV16_LRP1B_Complex;
+caseID=HPV16_LRP1B_Complex;
+chr=chr2;
+st_pos=141740000;
+ed_pos=141806500;
+n_ploidy=2;
+n_mean_dp=30.2;
+t_mean_dp=30;
+t_purity=1;
+t_ploidy=2;
+
+segm_para='-segm H';
+bg_para='-extht 160 -bgbcol black';
+x_axis_para='-x_rrc brown -x_lbs 100 -x_lnb 10000 -x_lbfz 6';
+y_axis_para='-y_len 30 -y_lbfz 6 -y_lbs 40';
+
+# input
+caseBam=../bam/$caseID.bam;
+
+reg_resol_para="-rgsol ./step01_segCN/region.resol.txt -auto_r 380";
+juncFile_para="-junc ./step01_segCN/junctions.info.txt";
+vsegFile_para="-vseg ./step01_segCN/virusSeg.info.txt";
+
+# output
+s01_out_pref=./step01_segCN/${patientID}.${chr}_${st_pos}_${ed_pos};
+out_svg=$s01_out_pref.svg;
+ploidy=2m0

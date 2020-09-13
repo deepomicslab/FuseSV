@@ -1,0 +1,5 @@
+#refseg_5p	bkpos_5p	strd_5p	refseg_3p	bkpos_3p	strd_3p	JR_count	NormalCellCopyRatio
+chr2	141759732	+	chr2	141790205	+	20	0
+chr2	141759733	-	chr2	141790205	+	139	0
+HPV16	4648	+	chr2	141802259	-	102	0
+chr2	141790204	+	HPV16	6532	+	140	0
