@@ -1,5 +1,5 @@
 # get_UCYC
-`get_UCYC` gets unit-cycles of local genomic map, the input of [`UCYCtoLM`](./UCYCtoLM.md)`.
+`get_UCYC` gets unit-cycles of local genomic map, the input of [`UCYCtoLM`](./UCYCtoLM.md).
 
 ## Usage
 
