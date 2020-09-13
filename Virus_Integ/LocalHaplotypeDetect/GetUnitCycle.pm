@@ -42,7 +42,7 @@ my @functoion_list = qw/
 sub return_HELP_INFO{
  my $V_Href = FuseSV::LoadOn->load_variants_dict();
  return "
-	 Usage:   perl $V_Href->{MainName} UCYCtoLM <[Options]>
+	 Usage:   perl $V_Href->{MainName} get_UCYC <[Options]>
 	 
 	 Options:
 
