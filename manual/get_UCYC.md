@@ -1,5 +1,5 @@
 # get_UCYC
-`get_UCYC` gets unit-cycles of local genomic map, the input of `[UCYCtoLM](./UCYCtoLM.md)`.
+`get_UCYC` gets unit-cycles of local genomic map, the input of [`UCYCtoLM`](./UCYCtoLM.md)`.
 
 ## Usage
 
@@ -20,7 +20,7 @@ Author:
 
 ### LocalHaplotypeSolver
 
-`get_UCYC` packages `[LocalHaplotypeSolver](https://github.com/deepomicslab/LocalHaplotypeSolver)`.
+`get_UCYC` packages [`LocalHaplotypeSolver`](https://github.com/deepomicslab/LocalHaplotypeSolver).
 Please check the detailed helps info in its repository.
 
 ```
