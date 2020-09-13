@@ -1,0 +1,42 @@
+{
+   "draw_segCN" : {
+      "mode_NO" : 14,
+      "descp" : "visualize host local genome segmentations, get input of 'get_UCYC'.",
+      "_group" : "vInteg Local Map",
+      "_comments" : "call and draw segments' copy number in local genomic region",
+      "module" : "FuseSV::Virus_Integ::DrawSegCN::DrawSegCN",
+      "main_func" : "draw_segmemt_CN"
+   },
+   "UCYCtoLM" : {
+      "mode_NO" : 18,
+      "descp" : "merge unit-cycles to local genomic map.",
+      "_group" : "vInteg Local Map",
+      "_comments" : "merge unit-cycles to bio-contig, to local map",
+      "module" : "FuseSV::Virus_Integ::LocalHaplotypeDetect::UnitCycleToBioContig",
+      "main_func" : "merge_unitcycle_to_biocontig"
+   },
+   "LMcircos" : {
+      "mode_NO" : 22,
+      "descp" : "draw local genomic map circos.",
+      "_group" : "vInteg Local Map",
+      "_comments" : "draw local map circos",
+      "module" : "FuseSV::Virus_Integ::LocalHaplotypeCircos::DrawLocalMapCircos",
+      "main_func" : "draw_local_map_circos"
+   },
+   "get_UCYC" : {
+      "mode_NO" : 23,
+      "descp" : "get unit-cycles of local genomic map, input of 'UCYCtoLM'.",
+      "_group" : "vInteg Local Map",
+      "_comments" : "get unit-cycles of local map, developed by ChangXu",
+      "module" : "FuseSV::Virus_Integ::LocalHaplotypeDetect::GetUnitCycle",
+      "main_func" : "get_unit_cycle"
+   },
+   "find_MH" : {
+      "mode_NO" : 24,
+      "descp" : "find micro-homology around virus integrations.",
+      "_group" : "Virus Integration",
+      "_comments" : "find MH around vInteg, write report and draw vInteg.",
+      "module" : "FuseSV::Virus_Integ::MicroHomology::Find_MH",
+      "main_func" : "find_vInteg_MH"
+   }
+}
