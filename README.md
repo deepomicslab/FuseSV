@@ -33,11 +33,11 @@ If you encounter problems, please open an issue at the [project on Github](https
 
 Currently, FuseSV provides commands.
 
-- (draw_segCN)(./manual/draw_segCN.md)
+- [draw_segCN](./manual/draw_segCN.md)
 
   visualize host local genome segmentations, get input of `get_UCYC`.
 
-- (get_UCYC)(./manual/get_UCYC.md)
+- [get_UCYC](./manual/get_UCYC.md)
   
   get unit-cycles of local genomic map, input of `UCYCtoLM`.
 
@@ -47,6 +47,6 @@ Currently, FuseSV provides commands.
   python -m pip install pulp
   ```
 
-- (UCYCtoLM)(./manual/UCYCtoLM.md)
+- [UCYCtoLM](./manual/UCYCtoLM.md)
 
   merge unit-cycles to local genomic map.

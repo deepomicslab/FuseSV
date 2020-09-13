@@ -1,5 +1,5 @@
 # draw_segCN
-`draw_segCN` visualizes host local genome segmentations, gets the input of `(get_UCYC)(./manual/get_UCYC.md)` .
+`draw_segCN` visualizes host local genome segmentations, gets the input of `[get_UCYC](./get_UCYC.md)` .
 
 ## Usage
 
