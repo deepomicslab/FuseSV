@@ -41,7 +41,7 @@ Currently, FuseSV provides commands.
   
   get unit-cycles of local genomic map, input of `UCYCtoLM`.
 
-  It packages `[LocalHaplotypeSolver](https://github.com/deepomicslab/LocalHaplotypeSolver)`, which requires Python2.7 and PuLP package for linear programming.
+  It packages [`LocalHaplotypeSolver`](https://github.com/deepomicslab/LocalHaplotypeSolver), which requires Python2.7 and PuLP package for linear programming.
 
   ```bash
   python -m pip install pulp
