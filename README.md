@@ -33,20 +33,20 @@ If you encounter problems, please open an issue at the [project on Github](https
 
 Currently, FuseSV provides commands.
 
-- draw_segCN
+- (draw_segCN)(./manual/draw_segCN.md)
 
-  visualize host local genome segmentations, get 'get_UCYC' config.
+  visualize host local genome segmentations, get input of `get_UCYC`.
 
-- get_UCYC
+- (get_UCYC)(./manual/get_UCYC.md)
   
-  get unit-cycles of local map.
+  get unit-cycles of local genomic map, input of `UCYCtoLM`.
 
-  It packages '[LocalHaplotypeSolver](https://github.com/deepomicslab/LocalHaplotypeSolver)', which requires Python2.7 and PuLP package for linear programming.
+  It packages `[LocalHaplotypeSolver](https://github.com/deepomicslab/LocalHaplotypeSolver)`, which requires Python2.7 and PuLP package for linear programming.
 
   ```bash
   python -m pip install pulp
   ```
 
-- UCYCtoLM
+- (UCYCtoLM)(./manual/UCYCtoLM.md)
 
-  merge unit-cycle to bio-contig in local map of virus integration.
+  merge unit-cycles to local genomic map.
