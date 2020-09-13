@@ -32,8 +32,8 @@ my ($VERSION, $DATE, $AUTHOR, $EMAIL, $MODULE_NAME);
 
 $MODULE_NAME = 'DrawSegCN';
 #----- version --------
-$VERSION = "5.36";
-$DATE = '2018-10-19';
+$VERSION = "5.37";
+$DATE = '2020-09-13';
 
 #----- author -----
 $AUTHOR = 'Wenlong Jia';
@@ -1296,7 +1296,7 @@ sub calculate_CopyNumber{
     my @outstr_FVGM = ();
     my $outstr_VSEG = '';
     my $outstr_JUNC = '';
-    if( $V_Href->{dG_CaseVsCtrl_mode} ){
+    if(1){ # $V_Href->{dG_CaseVsCtrl_mode} ){
         # calculate the copy number of virus-segments, and output
         for my $Vseg_NO ( sort {$a<=>$b} keys %{$V_Href->{dHG_VsegInfo}} ){
             my $this_vSegm_Href = $V_Href->{dHG_VsegInfo}->{$Vseg_NO};
