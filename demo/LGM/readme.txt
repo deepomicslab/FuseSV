@@ -33,7 +33,7 @@ The host genome reference is GRCh37.
       > HPV16_LRP1B_Complex.LOH.LGM.randtm_0.txt
          This is the final result showing LGM of the virus integrations. The
          result corresponds to the 'Simplest LGM' report in our paper.
-     b) If non-zero randtm is set, e.g., 100, the file will be named with 'randtm_100'.
+      > If non-zero randtm is set, e.g., 100, the file will be named with 'randtm_100'.
 
 < Operation >
 
