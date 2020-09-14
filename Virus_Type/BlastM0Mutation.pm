@@ -24,8 +24,8 @@ my ($VERSION, $DATE, $AUTHOR, $EMAIL, $MODULE_NAME);
 
 $MODULE_NAME = 'BlastM0Mutation';
 #----- version --------
-$VERSION = "0.15";
-$DATE = '2017-06-20';
+$VERSION = "0.16";
+$DATE = '2020-09-14';
 
 #----- author -----
 $AUTHOR = 'Wenlong Jia';
@@ -500,7 +500,7 @@ sub read_query_mapinfo_from_blast_m0{
 				# to store the map info
 				my $Query_MapInfo_Href = {};
 				# instance: Score =  149 bits (75), Expect = 6e-40
-				my ($score, $expect_E) = ($line_info =~ /Score\s+=\s+([\d\.]+)\s+bits.*Expect\s+=\s+(\S+)/);
+				my ($score, $expect_E) = ($line_info =~ /Score\s+=\s+([\d\.e\+]+)\s+bits.*Expect\s+=\s+(\S+)/);
 				#die "$line_info\n$score, $expect_E\n"; ## debug
 				# instance: Identities = 84/87 (96%)
 				my $Identities_line_info = <M0>;
@@ -780,15 +780,15 @@ sub concatenate_GapInducedByLargeInDel{
 						}
 						# compare and makeup map-info
 						my $diff_len = $makeup_Slen - $makeup_Qlen;
-						my $makeup_MapI = join('', (' ' x $diff_len));
+						my $makeup_MapI = join('', (' ' x abs($diff_len)));
 						# gap part
 						## query_seq has large deletion
 						if( $diff_len > 0 ){
-							$makeup_Qseq = join('', ('-' x $diff_len)) . $makeup_Qseq;
+							$makeup_Qseq = join('', ('-' x abs($diff_len))) . $makeup_Qseq;
 						}
 						## query_seq has large insertion
 						else{
-							$makeup_Sseq = join('', ('-' x $diff_len)) . $makeup_Sseq;
+							$makeup_Sseq = join('', ('-' x abs($diff_len))) . $makeup_Sseq;
 						}
 						# remained part, maybe mismatch(s)
 						for my $i ( reverse ( 1 .. min($makeup_Qlen, $makeup_Slen) ) ){
@@ -879,9 +879,9 @@ sub concatenate_GapInducedByLargeInDel{
 						if( $cand_Sidx >= 0 ){ # must be
 							my $ReplcLen = $cand_Sidx + 1;
 							# map info
-							$cand_mapInfo_Href->{map_info}        = join('', (' ' x $ReplcLen)) . substr($cand_mapInfo_Href->{map_info},        $ReplcLen);
+							$cand_mapInfo_Href->{map_info}        = join('', (' ' x abs($ReplcLen))) . substr($cand_mapInfo_Href->{map_info},        $ReplcLen);
 							# sbjct_seq
-							$cand_mapInfo_Href->{sbjct_info}->[1] = join('', ('-' x $ReplcLen)) . substr($cand_mapInfo_Href->{sbjct_info}->[1], $ReplcLen);
+							$cand_mapInfo_Href->{sbjct_info}->[1] = join('', ('-' x abs($ReplcLen))) . substr($cand_mapInfo_Href->{sbjct_info}->[1], $ReplcLen);
 						}
 						# concatenate 'makeup'+'cand' to 'fore'
 						## still record in 'fore_mapInfo_Href'
