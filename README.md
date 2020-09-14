@@ -50,3 +50,9 @@ Currently, FuseSV provides commands.
 - [UCYCtoLM](./manual/UCYCtoLM.md)
 
   merge unit-cycles to local genomic map.
+
+## Demo case
+
+### LGM
+one demo case is provided for the LGM analysis pipeline. Please check [demo](./demo/LGM).
+PS. More cases could be found in the submitted paper and the published repository.
