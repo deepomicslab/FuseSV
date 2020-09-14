@@ -54,5 +54,7 @@ Currently, FuseSV provides commands.
 ## Demo case
 
 ### LGM
+
 one demo case is provided for the LGM analysis pipeline. Please check [demo](./demo/LGM).
+
 PS. More cases could be found in the submitted paper and the published repository.
