@@ -5,8 +5,9 @@ use FindBin qw/$RealBin $RealScript/;
 use File::Basename qw/basename dirname/;
 use File::Spec qw/catfile abs2rel/;
 use Getopt::Long;
-use List::Util qw[min max sum];
-use SOAPfuse::General_Operation qw/warn_and_exit stout_and_sterr trible_run_for_success/;
+use List::Util qw/min max sum/;
+use BioFuse::Util::Log qw/ warn_and_exit stout_and_sterr /;
+use BioFuse::Util::Sys qw/ trible_run_for_success /;
 
 my ($seq_for_PCR_file);
 my ($blat_bin);

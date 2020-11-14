@@ -3,7 +3,9 @@ package FuseSV::Virus_Integ::LocalHaplotypeDetect::UnitCycle_OB;
 use strict;
 use warnings;
 use List::Util qw/ min max sum shuffle /;
-use SOAPfuse::General_Operation qw/ warn_and_exit stout_and_sterr getStrUnitRepeatTime GetRandBool /;
+use BioFuse::Util::Log qw/ warn_and_exit stout_and_sterr /;
+use BioFuse::Util::Random qw/ GetRandBool /;
+use BioFuse::Util::String qw/ getStrUnitRepeatTime /;
 require Exporter;
 
 #----- systemic variables -----

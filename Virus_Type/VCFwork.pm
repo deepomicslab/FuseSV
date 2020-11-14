@@ -2,8 +2,9 @@ package FuseSV::Virus_Type::VCFwork;
 
 use strict;
 use warnings;
-use List::Util qw[min max sum];
-use SOAPfuse::General_Operation qw/warn_and_exit trible_run_for_success/;
+use List::Util qw/min max sum/;
+use BioFuse::Util::Log qw/ warn_and_exit /;
+use BioFuse::Util::Sys qw/ trible_run_for_success /;
 use FuseSV::LoadOn;
 require Exporter;
 

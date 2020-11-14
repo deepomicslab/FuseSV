@@ -1,8 +1,8 @@
 #!/bin/usr/perl -w
 use strict;
-use SOAPfuse::OpenFile qw/Try_GZ_Read Try_GZ_Write/;
+use BioFuse::Util::GZfile qw/ Try_GZ_Read Try_GZ_Write /;
 use Getopt::Long;
-use List::Util qw[min max sum];
+use List::Util qw/min max sum/;
 use File::Spec qw/catfile/;
 use FindBin qw/$RealBin $RealScript/;
 use FuseSV::Virus_Type::CreateMutatedVirusGenome;

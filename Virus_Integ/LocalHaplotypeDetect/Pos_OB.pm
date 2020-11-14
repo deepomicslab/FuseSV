@@ -2,7 +2,7 @@ package FuseSV::Virus_Integ::LocalHaplotypeDetect::Pos_OB;
 
 use strict;
 use warnings;
-use SOAPfuse::General_Operation qw/ warn_and_exit Get_Two_Seg_Olen /;
+use BioFuse::Util::Log qw/ warn_and_exit /;
 require Exporter;
 
 #----- systemic variables -----

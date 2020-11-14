@@ -5,12 +5,11 @@ use warnings;
 use List::Util qw/ min max sum /;
 use Data::Dumper;
 use BioFuse::Util::Log qw/ warn_and_exit /;
-use FuseSV::Virus_Integ::MicroHomology::SeqFindMH qw/ Find_vtMH Find_sfMH /;
 use FuseSV::LoadOn;
-use SOAPfuse::SVG_Font qw/ show_text_in_line /;
-use SOAPfuse::SVG_Orthogonal_System_Elements qw/ draw_a_parallelogram /;
-use SOAPfuse::SVG_Orthogonal_System_Elements qw/ draw_a_ellipse /;
-use FuseSV::Visual::ArrangeObj qw/ allocate_object_vertical /;
+use FuseSV::Virus_Integ::MicroHomology::SeqFindMH qw/ Find_vtMH Find_sfMH /;
+use BioFuse::Visual::SVG_Util::Font qw / show_text_in_line /;
+use BioFuse::Visual::SVG_Util::RectSysEle qw/ draw_a_parallelogram draw_a_ellipse /;
+use BioFuse::Visual::ArrangeObj qw/ allocate_object_vertical /;
 require Exporter;
 
 #----- systemic variables -----

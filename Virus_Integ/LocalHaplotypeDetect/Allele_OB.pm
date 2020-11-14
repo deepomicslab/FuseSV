@@ -3,7 +3,7 @@ package FuseSV::Virus_Integ::LocalHaplotypeDetect::Allele_OB;
 use strict;
 use warnings;
 use List::Util qw/ min max sum first /;
-use SOAPfuse::General_Operation qw/ warn_and_exit stout_and_sterr /;
+use BioFuse::Util::Log qw/ warn_and_exit stout_and_sterr /;
 use FuseSV::Virus_Integ::LocalHaplotypeDetect::LocalMap_OB;
 require Exporter;
 

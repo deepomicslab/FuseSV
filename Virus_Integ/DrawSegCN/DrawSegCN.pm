@@ -4,18 +4,23 @@ use strict;
 use warnings;
 use Getopt::Long;
 use List::Util qw/ min max sum /;
-use SOAPfuse::OpenFile qw/ Try_GZ_Read Try_GZ_Write /;
-use SOAPfuse::General_Operation qw/ warn_and_exit stout_and_sterr trible_run_for_success Get_Two_Seg_Olen file_exist /;
-use SOAPfuse::SVG_Orthogonal_System_Elements qw/ draw_a_parallelogram /;
-use SOAPfuse::SVG_Font qw/ show_text_in_line get_size_of_text_to_show /;
-use FuseSV::LoadOn;
+use BioFuse::Util::Log qw/ warn_and_exit stout_and_sterr /;
+use BioFuse::Util::Sys qw/ trible_run_for_success /;
+use BioFuse::Util::GZfile qw/ Try_GZ_Read Try_GZ_Write /;
+use BioFuse::Util::Interval qw/ Get_Two_Seg_Olen /;
+use BioFuse::Util::Sys qw/ file_exist /;
+use BioFuse::Util::Interval qw/ arrange_region_with_clip /;
 use BioFuse::BioInfo::Objects::SeqData::Bam_OB;
-use FuseSV::Visual::ArrangeObj qw/ load_regResolForWindowlize get_pos_windowNO allocate_object_bilater allocate_object_vertical /;
-use FuseSV::Visual::DepthWork qw/ get_windowSmoDepth deal_window_depth_info get_ctrl_copyR draw_depth_spectrum get_givenWinItvalMeanDepth /;
-use FuseSV::Visual::GeneWork qw/ load_transInfo_from_tpsl add_user_region_to_gene_info allocate_genes_and_draw /;
-use FuseSV::Visual::RMSKwork qw/ load_rmskInfo_from_idxBgz allocate_RMSKele_and_draw /;
-use FuseSV::Visual::AxisWork qw/ set_Y_axis_Resol_LabStep show_Y_axis show_X_axis /;
-use FuseSV::Visual::RegionWork qw/ arrange_region_with_clip /;
+use BioFuse::BioInfo::Depth qw/ get_windowSmoDepth deal_window_depth_info get_ctrl_copyR get_givenWinItvalMeanDepth /;
+use BioFuse::Visual::SVG_Util::RectSysEle qw/ draw_a_parallelogram /;
+use BioFuse::Visual::SVG_Util::Font qw / show_text_in_line get_size_of_text_to_show /;
+use BioFuse::Visual::ArrangeObj qw/ allocate_object_bilater allocate_object_vertical /;
+use BioFuse::Visual::Windows qw/ load_regResolForWindowlize get_pos_windowNO /;
+use BioFuse::Visual::Axis qw/ set_Y_axis_Resol_LabStep show_Y_axis show_X_axis /;
+use BioFuse::Visual::BioInfo::Depth qw/ draw_depth_spectrum /;
+use BioFuse::Visual::BioInfo::Gene qw/ load_transInfo_from_tpsl add_user_region_to_gene_info allocate_genes_and_draw /;
+use BioFuse::Visual::BioInfo::RMSK qw/ load_rmskInfo_from_idxBgz allocate_RMSKele_and_draw /;
+use FuseSV::LoadOn;
 use FuseSV::Virus_Integ::DrawSegCN::ObjCountTransfMixToPureT qw/ get_Tcell_GMpart get_Tcell_GMratio get_Ncell_GMpart get_Ncell_GMratio get_ObjCountOfPureTumorCell get_ObjSingleCNdepthInMixed /;
 require Exporter;
 
@@ -303,18 +308,18 @@ sub Load_moduleVar_to_pubVarPool{
             [ dHG_VsegInfo => {} ],
             # [ output_pref => undef ],
             [ CtrlPos2Depth => {} ],
-            # check regResol_Href structure in FuseSV::Visual::ArrangeObj module
+            # check regResol_Href structure in BioFuse::Visual::Windows module
             [ dG_regResol => {} ],
             [ dG_PosToWinNOSets => [] ],
-            # check winDepth_Href structure in FuseSV::Visual::DepthWork module
+            # check winDepth_Href structure in BioFuse::Visual::BioInfo::Depth module
             [ dG_winDepth => {} ],
             # dG_bkWindow -> $window_NO = $bkpos
             [ dG_bkWindow => {} ],
             # dG_bkReason -> $window_NO = 'intra-SV' or 'inter-SV/vitg'
             [ dG_bkReason => {} ],
-            # check TransInfo_Href structure in FuseSV::Visual::GeneWork module
+            # check TransInfo_Href structure in BioFuse::Visual::BioInfo::Gene module
             [ dG_TransInfo => {} ],
-            # check RmskInfo_Href structure in FuseSV::Visual::RMSKwork module
+            # check RmskInfo_Href structure in BioFuse::Visual::BioInfo::RMSK module
             [ dG_RmskInfo => {} ],
             [ dG_maxDepthToDraw => 0 ],
             [ dG_maxWinNOtoDraw => 0 ],

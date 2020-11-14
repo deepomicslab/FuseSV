@@ -5,7 +5,8 @@ use warnings;
 use Getopt::Long;
 use File::Spec qw/ catfile /;
 use FindBin qw/ $RealBin /;
-use SOAPfuse::General_Operation qw/ warn_and_exit stout_and_sterr file_exist /;
+use BioFuse::Util::Log qw/ warn_and_exit stout_and_sterr /;
+use BioFuse::Util::Sys qw/ file_exist /;
 use FuseSV::LoadOn;
 require Exporter;
 

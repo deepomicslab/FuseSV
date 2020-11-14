@@ -2,9 +2,10 @@ package FuseSV::Virus_Type::SmartAlignment;
 
 use strict;
 use warnings;
-use List::Util qw[min max sum];
-use SOAPfuse::General_Operation qw/warn_and_exit trible_run_for_success stout_and_sterr/;
-use SOAPfuse::OpenFile qw/Try_GZ_Read Try_GZ_Write/;
+use List::Util qw/min max sum/;
+use BioFuse::Util::Log qw/ warn_and_exit stout_and_sterr /;
+use BioFuse::Util::Sys qw/ trible_run_for_success /;
+use BioFuse::Util::GZfile qw/ Try_GZ_Read Try_GZ_Write /;
 use FuseSV::LoadOn;
 use FuseSV::Virus_Type::CandReads;
 use Parallel::ForkManager;

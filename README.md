@@ -24,7 +24,6 @@ List of additional PERL modules required:
 - [Math::Trig](https://metacpan.org/pod/Math::Trig)
 - [POSIX](https://metacpan.org/pod/distribution/perl/ext/POSIX/lib/POSIX.pod)
 - [SVG](https://metacpan.org/pod/SVG)
-- [SOAPfuse](https://github.com/Nobel-Justin/SOAPfuse)
 - [BioFuse](https://github.com/Nobel-Justin/BioFuse)
 
 If you encounter problems, please open an issue at the [project on Github](https://github.com/deepomicslab/FuseSV).

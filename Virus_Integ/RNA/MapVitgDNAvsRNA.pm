@@ -4,8 +4,7 @@ use strict;
 use warnings;
 use Getopt::Long;
 use List::Util qw/ min max sum /;
-use SOAPfuse::OpenFile qw/ Try_GZ_Read Try_GZ_Write /;
-use SOAPfuse::General_Operation qw/ warn_and_exit stout_and_sterr trible_run_for_success Get_Two_Seg_Olen /;
+use BioFuse::Util::Log qw/ warn_and_exit stout_and_sterr /;
 use FuseSV::LoadOn;
 require Exporter;
 
@@ -152,15 +151,15 @@ sub Load_moduleVar_to_pubVarPool{
 			[ case_Ncell_GMratio => undef ],
 			# [ output_pref => undef ],
 			[ CtrlPos2Depth => {} ],
-			# check regResol_Href structure in FuseSV::Visual::ArrangeObj module
+			# check regResol_Href structure in BioFuse::Visual::Windows module
 			[ dG_regResol => {} ],
-			# check winDepth_Href structure in FuseSV::Visual::DepthWork module
+			# check winDepth_Href structure in BioFuse::Visual::BioInfo::Depth module
 			[ dG_winDepth => {} ],
 			# dG_bkWindow -> $window_NO = $bkpos
 			[ dG_bkWindow => {} ],
-			# check TransInfo_Href structure in FuseSV::Visual::GeneWork module
+			# check TransInfo_Href structure in BioFuse::Visual::BioInfo::Gene module
 			[ dG_TransInfo => {} ],
-			# check RmskInfo_Href structure in FuseSV::Visual::RMSKwork module
+			# check RmskInfo_Href structure in BioFuse::Visual::BioInfo::RMSK module
 			[ dG_RmskInfo => {} ],
 			[ dG_maxDepthToDraw => 0 ],
 			[ dG_maxWinNOtoDraw => 0 ],

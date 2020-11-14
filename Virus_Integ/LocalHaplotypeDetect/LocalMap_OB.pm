@@ -4,7 +4,8 @@ use strict;
 use warnings;
 use List::Util qw/ min max sum shuffle first /;
 use Digest::MD5 qw/ md5_hex /;
-use SOAPfuse::General_Operation qw/ warn_and_exit stout_and_sterr GetRandBool /;
+use BioFuse::Util::Log qw/ warn_and_exit stout_and_sterr /;
+use BioFuse::Util::Random qw/ GetRandBool /;
 require Exporter;
 
 #----- systemic variables -----
