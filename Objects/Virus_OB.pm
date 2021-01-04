@@ -16,8 +16,8 @@ our ($VERSION, $DATE, $AUTHOR, $EMAIL, $MODULE_NAME);
 
 $MODULE_NAME = 'FuseSV::Objects::Virus_OB';
 #----- version --------
-$VERSION = "0.01";
-$DATE = '2019-06-03';
+$VERSION = "0.02";
+$DATE = '2020-08-10';
 
 #----- author -----
 $AUTHOR = 'Wenlong Jia';
@@ -34,6 +34,8 @@ my @functoion_list = qw/
                         ncbi_txt
                         set_circular
                         is_circular
+                        set_origLen
+                        origLen
                         set_extLen
                         extLen
                         set_virus_no
@@ -47,11 +49,13 @@ my @functoion_list = qw/
 #--- structure of object
 # basis, BioFuse::BioInfo::Objects::Segment::RefSeg_OB
 # virus_OB -> circular = 0(no)/1(yes)
+# virus_OB -> length = $origLen **basis**
 # virus_OB -> extLen = $extLen
 # virus_OB -> no = $NO
 # virus_OB -> ncbi = {genebank=>, url=>, html=>}
 # virus_OB -> ana_ref = $ana_ref
 # virus_OB -> init_bam = $init_bam, BioFuse::BioInfo::Objects::SeqData::Bam_OB
+# virus_OB -> variant = {}
 
 #--- construction of object ---
 sub new{

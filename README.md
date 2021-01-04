@@ -52,7 +52,7 @@ Currently, FuseSV provides commands.
 
 ## Demo case
 
-### LGM
+### Local Genomic Map (LGM)
 
 one demo case is provided for the LGM analysis pipeline. Please check [demo](./demo/LGM).
 
