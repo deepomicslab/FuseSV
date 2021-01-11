@@ -92,7 +92,7 @@ Options:
   -h|help      Display this help info.
 
 Version:
-  5.36 at 2018-10-19
+  5.40 at 2021-01-11
 
 Author:
   Wenlong Jia (wenlongkxm@gmail.com)
