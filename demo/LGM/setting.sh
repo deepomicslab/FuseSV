@@ -1,9 +1,11 @@
+# PLEASE use absolute path
 # TOOLS
 # FuseSV
 # https://github.com/deepomicslab/FuseSV
 FuseSV=$PWD/../../FuseSV.pl;
 # LocalHaplotypeSolver
 # https://github.com/deepomicslab/LocalHaplotypeSolver
+# you can find LocalHap.py in this folder
 LHS_DIR=__THE_LOCALHAPLOTYPESOLVER_FOLDER_PATH__;
 # SAMtools, version: 1.3.1
 SAMtools=__THE_SAMTOOLS_PATH__;
@@ -15,6 +17,6 @@ tabix=__THE_TABIX_PATH__;
 # see BioFuse, https://github.com/Nobel-Justin/BioFuse
 # see SOAPfuse blog, https://sourceforge.net/p/soapfuse/blog
 #     'New PSL file format applied by SOAPfuse'
-# or, you can use the shared file (hg19, ensembl v75):
+# or, you can use the shared .psl.bgz and .tbi files (hg19, ensembl v75):
 #     https://www.dropbox.com/sh/qsjsvfgeq5lcgbs/AADgFgv7B8_CyoNco-T4_Bh-a?dl=0
 tpsl_bgz=__THE_TPSL_BGZ_PATH__;

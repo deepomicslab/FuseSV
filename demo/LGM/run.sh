@@ -1,5 +1,5 @@
-#verion=v1.0
-#Wenlong JIA, 2020-09-12
+#verion=v1.1
+#Wenlong JIA, 2021-01-11
 
 sample=null;
 st_step=1;
@@ -28,24 +28,33 @@ if [ $sample = "null" ]; then
   echo $usage; exit 1;
 fi
 
-whole_dir=$PWD;
-pm_dir=$whole_dir/../../../;
+# load variables
+source ./setting.sh;
+
+pm_dir=`dirname $FuseSV`;
+pm_dir=$pm_dir/..;
 if [ ! -e $pm_dir ] || [ ! -e "$pm_dir/FuseSV" ]; then
   echo "cannot find perl module folder: $pm_dir";
   exit 1;
 fi
-sample_dir=$whole_dir/$sample;
+
+sample_dir=$PWD/$sample;
 if [ ! -e $sample_dir ]; then
   echo "cannot find sample folder: $sample_dir";
   exit 1;
 fi
-
-# load variables
-source ./setting.sh;
 # add module
 PERL5LIB=$pm_dir:$PERL5LIB; export PERL5LIB;
 
 cd $sample_dir/find_lgm;
+
+# path check
+for file in FuseSV LHS_DIR SAMtools tabix tpsl_bgz; do
+  if [ ! -e $(eval echo \$$file) ]; then
+    echo "please use correct absolute path for '$file' in setting.sh";
+    exit;
+  fi;
+done
 
 #--------------------------------#
 # Step 1, create config for LGM  #

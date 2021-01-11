@@ -20,6 +20,7 @@ use BioFuse::Visual::Axis qw/ set_Y_axis_Resol_LabStep show_Y_axis show_X_axis /
 use BioFuse::Visual::BioInfo::Depth qw/ draw_depth_spectrum /;
 use BioFuse::Visual::BioInfo::Gene qw/ load_transInfo_from_tpsl add_user_region_to_gene_info allocate_genes_and_draw /;
 use BioFuse::Visual::BioInfo::RMSK qw/ load_rmskInfo_from_idxBgz allocate_RMSKele_and_draw /;
+use BioFuse::Visual::SVG_Util::SVGWork qw/ initialize_SVG_obj /;
 use FuseSV::LoadOn;
 use FuseSV::Virus_Integ::DrawSegCN::ObjCountTransfMixToPureT qw/ get_Tcell_GMpart get_Tcell_GMratio get_Ncell_GMpart get_Ncell_GMratio get_ObjCountOfPureTumorCell get_ObjSingleCNdepthInMixed /;
 require Exporter;
@@ -37,8 +38,8 @@ my ($VERSION, $DATE, $AUTHOR, $EMAIL, $MODULE_NAME);
 
 $MODULE_NAME = 'DrawSegCN';
 #----- version --------
-$VERSION = "5.37";
-$DATE = '2020-09-13';
+$VERSION = "5.40";
+$DATE = '2021-01-11';
 
 #----- author -----
 $AUTHOR = 'Wenlong Jia';
@@ -464,6 +465,8 @@ sub draw_segmemt_CN{
     &set_x_axis;
     # set attributes of y axis #
     &set_y_axis;
+    # initialize SVG obj
+    &init_svg_obj;
     # draw rmsk elements in this region #
     # create SVG object, maybe
     &draw_rmsk if( defined $V_Href->{rmsk_idx_bgz} );
@@ -1053,6 +1056,13 @@ sub set_y_axis{
     stout_and_sterr `date`."[INFO]\tSet Y axis OK.\n";
 }
 
+#--- initialize SVG obj ---
+sub init_svg_obj{
+    my $bg_width = $V_Href->{dG_axisZX} + $V_Href->{dG_x_axisLen} + $V_Href->{dG_extWidth}*2;
+    my $bg_height = $V_Href->{dG_axisZY} + $V_Href->{dG_y_axisLen} + $V_Href->{dG_extHeight}*5;
+    $V_Href->{general_SVG_obj} = initialize_SVG_obj(bg_width=>$bg_width,bg_height=>$bg_height);
+}
+
 #--- draw rmsk ele ---
 ## create SVG object, maybe
 sub draw_rmsk{
@@ -1063,7 +1073,7 @@ sub draw_rmsk{
     }
 
     allocate_RMSKele_and_draw(
-                                SVG_obj_Oref => \$V_Href->{general_SVG_obj},
+                                svg_obj => $V_Href->{general_SVG_obj},
                                 RmskInfoPool_Href => $V_Href->{dG_RmskInfo},
                                 pos2wNO_para_Aref => $V_Href->{dG_PosToWinNOSets},
                                 axisZX => $V_Href->{dG_axisZX},
@@ -1101,7 +1111,7 @@ sub draw_y_axis{
 
     # draw Y axis
     show_Y_axis(
-                 SVG_obj_Oref => \$V_Href->{general_SVG_obj},
+                 svg_obj => $V_Href->{general_SVG_obj},
                  # attributes
                  yResol => $V_Href->{dG_y_resol},
                  yMaxValue => $V_Href->{dG_maxDepthToDraw},
@@ -1131,7 +1141,7 @@ sub draw_y_axis{
 sub draw_depth{
     # draw depth spectrum of each tissue
     draw_depth_spectrum(
-                            SVG_obj_Oref => \$V_Href->{general_SVG_obj},
+                            svg_obj => $V_Href->{general_SVG_obj},
                             winDepth_Href => $V_Href->{dG_winDepth},
                             smoDepthKey => 'showdepth',
                             maxWinNOtoDraw => $V_Href->{dG_maxWinNOtoDraw},
@@ -1171,7 +1181,7 @@ sub draw_genes{
     }
 
     allocate_genes_and_draw(
-                            SVG_obj_Oref => \$V_Href->{general_SVG_obj},
+                            svg_obj => $V_Href->{general_SVG_obj},
                             TransInfo_Href => $V_Href->{dG_TransInfo},
                             pos2wNO_para_Aref => $V_Href->{dG_PosToWinNOSets},
                             axisZX_Sref => \$V_Href->{dG_axisZX},
@@ -1191,7 +1201,7 @@ sub draw_x_axis{
     $xLabelText .= "\n".$V_Href->{dHG_sampleIDtoShow} if( defined $V_Href->{dHG_sampleIDtoShow} );
     # show X axis
     show_X_axis(
-                SVG_obj_Oref => \$V_Href->{general_SVG_obj},
+                svg_obj => $V_Href->{general_SVG_obj},
                 # location
                 axisZX => $V_Href->{dG_axisZX},
                 axisZY_Sref => \$V_Href->{dG_axisZY},
@@ -1422,7 +1432,7 @@ sub show_breakpoints{
         my $this_SegmSpanWinNum = $ed_winNO - $st_winNO + 1;
         my $this_Segm_X = $V_Href->{dG_axisZX} + ($st_winNO + $ed_winNO) / 2;
         draw_a_parallelogram(
-                                \$V_Href->{general_SVG_obj},
+                                svg_obj => $V_Href->{general_SVG_obj},
                                 x => $this_Segm_X,
                                 y => $Segm_Y,
                                 fill_color => $V_Href->{dHG_SegmFillCol},
@@ -1456,7 +1466,7 @@ sub show_breakpoints{
             my $cnText_X = ( $cnLine_X1 + $cnLine_X2 ) / 2;
             my $cnText_Y = $cnLine_Y - $V_Href->{dHG_CNlineWidth} * 2;
             show_text_in_line(
-                                \$V_Href->{general_SVG_obj},
+                                svg_obj => $V_Href->{general_SVG_obj},
                                 text_x => $cnText_X,
                                 text_y => $cnText_Y,
                                 text => "CN~$puT_CN",
@@ -1540,7 +1550,7 @@ sub show_breakpoints{
         my ($text_height, $text_width) = @{ $bkPosText_Href->{$bkPos}->{text_size} };
         ## show text square
         draw_a_parallelogram(
-                                \$V_Href->{general_SVG_obj},
+                                svg_obj => $V_Href->{general_SVG_obj},
                                 x => $bkPosText_X,
                                 y => $bkPosText_Y + $text_height / 2,
                                 fill_color => 'white',
@@ -1573,7 +1583,7 @@ sub show_figure_information{
 
     # background
     draw_a_parallelogram(
-                            \$V_Href->{general_SVG_obj},
+                            svg_obj => $V_Href->{general_SVG_obj},
                             x => $botrig_x/2,
                             y => $botrig_y/2,
                             head_bottom_side_len => $botrig_x,
@@ -1594,7 +1604,7 @@ sub show_figure_information{
     my $text_left_y = $text_height / 2 * 1.1;
     for my $content_Aref (@contents){
         show_text_in_line(
-                            \$V_Href->{general_SVG_obj},
+                            svg_obj => $V_Href->{general_SVG_obj},
                             text_x => $text_left_x,
                             text_y => $text_left_y,
                             text => $content_Aref->[0],
