@@ -15,14 +15,6 @@
       "module" : "FuseSV::Virus_Integ::LocalHaplotypeDetect::UnitCycleToBioContig",
       "main_func" : "merge_unitcycle_to_biocontig"
    },
-   "LMcircos" : {
-      "mode_NO" : 22,
-      "descp" : "draw local genomic map circos.",
-      "_group" : "vInteg Local Map",
-      "_comments" : "draw local map circos",
-      "module" : "FuseSV::Virus_Integ::LocalHaplotypeCircos::DrawLocalMapCircos",
-      "main_func" : "draw_local_map_circos"
-   },
    "get_UCYC" : {
       "mode_NO" : 23,
       "descp" : "get unit-cycles of local genomic map, input of 'UCYCtoLM'.",
@@ -30,13 +22,5 @@
       "_comments" : "get unit-cycles of local map, developed by ChangXu",
       "module" : "FuseSV::Virus_Integ::LocalHaplotypeDetect::GetUnitCycle",
       "main_func" : "get_unit_cycle"
-   },
-   "find_MH" : {
-      "mode_NO" : 24,
-      "descp" : "find micro-homology around virus integrations.",
-      "_group" : "Virus Integration",
-      "_comments" : "find MH around vInteg, write report and draw vInteg.",
-      "module" : "FuseSV::Virus_Integ::MicroHomology::Find_MH",
-      "main_func" : "find_vInteg_MH"
    }
 }
