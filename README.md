@@ -6,7 +6,7 @@ Tools for oncovirus analysis from NGS data.
 - Email:  wenlongkxm@gmail.com
 
 ## Version
-0.28
+0.29
 
 ## Installation
 

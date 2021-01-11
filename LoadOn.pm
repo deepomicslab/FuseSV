@@ -37,8 +37,8 @@ our $V_Href = {
     #++++++++++++++#
 
     MainName => 'FuseSV.pl',
-    Version => '0.28',
-    Date => '2020-09-12',
+    Version => '0.29',
+    Date => '2022-01-10',
     AUTHOR => 'Wenlong Jia',
     EMAIL => 'wenlongkxm@gmail.com',
 
