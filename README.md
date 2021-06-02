@@ -56,4 +56,4 @@ Currently, FuseSV provides commands.
 
 one demo case is provided for the LGM analysis pipeline. Please check [demo](./demo/LGM).
 
-PS. More cases could be found in the submitted paper and the published repository.
+LGM analysis data of all samples in submitted manuscript are available in the [Supplementary Dataset zip](./demo/LGM/Supplementary_Dataset.zip) file.
